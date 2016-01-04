@@ -1,0 +1,25 @@
+Script started on Fri 16 Oct 2015 05:51:00 AM UTC
+]0;fedora@COMP4003:~/Assignment3[?1034h[fedora@COMP4003 Assignment3]$ sqlplus
+
+SQL*Plus: Release 11.2.0.2.0 Production on Fri Oct 16 05:51:10 2015
+
+Copyright (c) 1982, 2011, Oracle.  All rights reserved.
+
+Enter user-name: oracle
+Enter password: 
+
+Connected to:
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+SQL> SET SERVEROUTPUT ON SIZE 10000;
+SQL> SET LINESIZE 1000;
+SQL> SET PAGESIZE 1000;
+SQL> @Part1.sql
+
+PL/SQL procedure successfully completed.
+
+SQL> exit
+Disconnected from Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+]0;fedora@COMP4003:~/Assignment3[fedora@COMP4003 Assignment3]$ exit
+
+Script done on Fri 16 Oct 2015 05:51:41 AM UTC

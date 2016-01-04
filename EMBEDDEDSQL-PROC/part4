@@ -1,0 +1,94 @@
+Script started on Sat 03 Oct 2015 11:59:46 PM UTC
+]0;fedora@COMP4003:~/Assignment2[?1034h[fedora@COMP4003 Assignment2]$ proc Part4.pc
+
+Pro*C/C++: Release 11.2.0.1.0 - Production on Sat Oct 3 23:59:57 2015
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+
+System default option values taken from: /u01/app/oracle/product/11.2.0/xe/precomp/admin/pcscfg.cfg
+
+]0;fedora@COMP4003:~/Assignment2[fedora@COMP4003 Assignment2]$ cc -c Part4.c -I/usr/include/oracle/11.2/client64
+"Part4.c", line 117: warning: no explicit type given
+"Part4.c", line 119: warning: no explicit type given
+"Part4.c", line 121: warning: no explicit type given
+"Part4.c", line 122: warning: no explicit type given
+"Part4.c", line 123: warning: no explicit type given
+"Part4.c", line 796: warning: old-style declaration or incorrect type for: alloc_descriptors
+"Part4.c", line 950: warning: argument #1 is incompatible with prototype:
+	prototype: pointer to unsigned int : "/usr/include/oracle/11.2/client64/sqlcpr.h", line 71
+	argument : pointer to unsigned long
+"Part4.c", line 1122: warning: newline not last character in file
+]0;fedora@COMP4003:~/Assignment2[fedora@COMP4003 Assignment2]$ cc -o Part4 Part4.o -L/usr/lib/oracle/11.2/client64 /lib -lclntsh
+]0;fedora@COMP4003:~/Assignment2[fedora@COMP4003 Assignment2]$ ./Part4
+Connected to ORACLE
+Type a table to Query (or Q to Exit)> Suppliers
+
+S#   SNAME      STAT CITY       
+---- ---------- ---- ---------- 
+
+S1   Smith        20 London     
+S2   Jones        30 Paris      
+S3   Blake        30 Paris      
+S4   Clark        20 London     
+S5   Adams        30 Athens     
+
+
+5 rows processed.
+Type a table to Query (or Q to Exit)> Parts
+
+P#   PNAME      COLOR      WEIG CITY       
+---- ---------- ---------- ---- ---------- 
+
+P1   Nut        Red          12 London     
+P2   Bolt       Green        17 Paris      
+P3   Screw      Blue         17 Oslo       
+P4   Screw      Red          14 London     
+P5   Can        Blue         12 Paris      
+P6   Cog        Red          19 London     
+
+
+6 rows processed.
+Type a table to Query (or Q to Exit)> SP
+
+S#   P#   QTY  
+---- ---- ---- 
+
+S1   P1    300 
+S1   P2    200 
+S1   P3    400 
+S1   P4    200 
+S1   P5    100 
+S1   P6    100 
+S2   P1    300 
+S2   P2    400 
+S3   P2    200 
+S4   P2    200 
+S4   P4    300 
+S4   P5    400 
+
+
+12 rows processed.
+Type a table to Query (or Q to Exit)> no  not   NotATable
+ORA-00942: table or view does not exist
+                              
+
+0 rows processed.
+Type a table to Query (or Q to Exit)> SuPpiL      PaRtS
+
+P#   PNAME      COLOR      WEIG CITY       
+---- ---------- ---------- ---- ---------- 
+
+P1   Nut        Red          12 London     
+P2   Bolt       Green        17 Paris      
+P3   Screw      Blue         17 Oslo       
+P4   Screw      Red          14 London     
+P5   Can        Blue         12 Paris      
+P6   Cog        Red          19 London     
+
+
+6 rows processed.
+Type a table to Query (or Q to Exit)> Q
+Bye!
+]0;fedora@COMP4003:~/Assignment2[fedora@COMP4003 Assignment2]$ exit
+
+Script done on Sun 04 Oct 2015 12:03:49 AM UTC

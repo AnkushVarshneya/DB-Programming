@@ -1,0 +1,93 @@
+Script started on Fri 16 Oct 2015 05:52:35 AM UTC
+]0;fedora@COMP4003:~/Assignment3[?1034h[fedora@COMP4003 Assignment3]$ sqlplus
+
+SQL*Plus: Release 11.2.0.2.0 Production on Fri Oct 16 05:52:43 2015
+
+Copyright (c) 1982, 2011, Oracle.  All rights reserved.
+
+Enter user-name: oracle
+Enter password: 
+
+Connected to:
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+SQL> SET SERVEROUTPUT ON SIZE 10000;
+SQL> SET LINESIZE 1000;
+SQL> SET PAGESIZE 1000;
+SQL> @Part3.sql
+add_student operation sucessful!
+add_student operation sucessful!
+add_student operation sucessful!
+add_student operation sucessful!
+add_student operation sucessful!
+add_student operation sucessful!
+add_student operation sucessful!
+add_student operation sucessful!
+add_student operation sucessful!
+add_student operation sucessful!
+add_course operation sucessful!
+add_course operation sucessful!
+add_course operation sucessful!
+add_course operation sucessful!
+add_course operation sucessful!
+add_course operation sucessful!
+add_course operation sucessful!
+add_course operation sucessful!
+add_course operation sucessful!
+add_course operation sucessful!
+enroll_course operation sucessful!
+enroll_course operation sucessful!
+enroll_course operation sucessful!
+enroll_course operation sucessful!
+enroll_course operation sucessful!
+enroll_course operation sucessful!
+enroll_course operation sucessful!
+enroll_course operation sucessful!
+enroll_course operation sucessful!
+add_student operation unsucessful: Student name cannot be null!
+add_student operation unsucessful: Student is already added!
+delete_student operation unsucessful: Student cannot be deleted as it does not exist!
+delete_student operation sucessful!
+add_student operation sucessful!
+delete_student operation unsucessful: Student cannot be deleted as it does not exist!
+change_name operation unsucessful: Student cannot change name as it does not exist!
+change_name operation unsucessful: Student cannot change name as that name is already added!
+change_name operation unsucessful: Student name cannot be null!
+change_name operation sucessful!
+change_address operation unsucessful: Student cannot change address as it does not exist!
+change_address operation sucessful!
+change_address operation sucessful!
+enroll_course operation unsucessful: Student cannot be enrolled as it does not exist!
+enroll_course operation unsucessful: Course cannot be enrolled to as it does not exist!
+enroll_course operation sucessful!
+enroll_course operation sucessful!
+enroll_course operation unsucessful: Student is already enrolled!
+enroll_course operation unsucessful: Time conflicts with courses!
+add_course operation unsucessful: Course name cannot be null!
+add_course operation unsucessful: Course is already added!
+add_course operation unsucessful: Invalid Days, use MWF or TR for days!
+add_course operation unsucessful: Invalid Times, use 10:35-11:25 or 1:35-2:25 or 3:35-4:25 for times!
+add_course operation unsucessful: Location conflicts with another course!
+add_course operation sucessful!
+change_loc operation unsucessful: Course location cannot be changed as it does not exist!
+change_loc operation unsucessful: Location conflicts with another course!
+change_loc operation sucessful!
+change_loc operation sucessful!
+change_loc operation sucessful!
+delete_course operation unsucessful: Course cannot be deleted as it does not exist!
+delete_course operation unsucessful: Course cannot be deleted as it does not exist!
+delete_course operation unsucessful: Course cannot be deleted as it has students enrolled!
+delete_course operation sucessful!
+give_mark operation unsucessful: Cannot give mark as student not enrolled in course!
+give_mark operation unsucessful: Cannot give mark as student not enrolled in course!
+give_mark operation unsucessful: Cannot give mark as student not enrolled in course!
+give_mark operation sucessful!
+give_mark operation sucessful!
+
+PL/SQL procedure successfully completed.
+
+SQL> exit
+Disconnected from Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+]0;fedora@COMP4003:~/Assignment3[fedora@COMP4003 Assignment3]$ exit
+
+Script done on Fri 16 Oct 2015 05:53:14 AM UTC

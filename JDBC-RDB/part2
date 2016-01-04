@@ -1,0 +1,766 @@
+Script started on Sun 15 Nov 2015 12:24:18 AM UTC
+]0;fedora@COMP4003:~/AnkushVarshneyaComp4003Assignment4[?1034h[fedora@COMP4003 AnkushVarshneyaComp4003Assignment4]$ javac part2.java[1Part2.javaPart2.java
+]0;fedora@COMP4003:~/AnkushVarshneyaComp4003Assignment4[fedora@COMP4003 AnkushVarshneyaComp4003Assignment4]$ javac Part2.javapart2.javaPart1.java[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K Part2
+Connecting to JDBC...
+JDBC connected.
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 1
+1. open_branch - Bank Application
+-------------------------------------
+Address: a
+Branch Opened with B# = 000
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 1
+1. open_branch - Bank Application
+-------------------------------------
+Address: b
+Branch Opened with B# = 001
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 1 2
+2. close_branch - Bank Application
+--------------------------------------
+Address or Branch Number: a
+Branch closed!
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 1
+1. open_branch - Bank Application
+-------------------------------------
+Address: a
+Branch Opened with B# = 000
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 4
+4. setup_customer - Bank Application
+--------------------------------------
+Name: ankush
+Address or Branch Number: a
+Status changed!
+Set Account with Account# = 0000000
+Set customer with customer# = 00000
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 4
+4. setup_customer - Bank Application
+--------------------------------------
+Name: ankush
+Address or Branch Number: a b
+Unable to setup customer, as it already exists.
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 4
+4. setup_customer - Bank Application
+--------------------------------------
+Name: a
+Address or Branch Number: a
+Status changed!
+Set Account with Account# = 0000001
+Set customer with customer# = 00001
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 4
+4. setup_customer - Bank Application
+--------------------------------------
+Name: a
+Address or Branch Number: a
+Unable to setup customer, as it already exists.
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 5
+5. close_account - Bank Application
+--------------------------------------
+Name: a
+Address or Branch Number: a
+Customer deleted!
+Account closed!
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 3
+3. setup_account - Bank Application
+--------------------------------------
+Name: Ankush
+Address or Branch Number: b
+Amount: 100
+Unable to set account, customer not found.
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 3
+3. setup_account - Bank Application
+--------------------------------------
+Name: Ankush      ankush
+Address or Branch Number: b a
+Amount: 100
+Status changed!
+Set Account with Account# = 0000001
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 3
+3. setup_account - Bank Application
+--------------------------------------
+Name: ankush
+Address or Branch Number: b
+Amount: 100
+Status changed!
+Set Account with Account# = 0010000
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 11
+11. show_customer - Bank Application
+--------------------------------------
+Name: ankush
++-----------+----------+--------+----------+---------+
+| Customer# |   Name   | Status | Account# | Balance |
++===========+==========+========+==========+=========+
+|      00000|    ankush|       1|   0000000|     0.00|
++-----------+----------+--------+----------+---------+
+|      00000|    ankush|       1|   0000001|   100.00|
++-----------+----------+--------+----------+---------+
+|      00000|    ankush|       1|   0010000|   100.00|
++-----------+----------+--------+----------+---------+
+|                            Total Balance =   200.00|
++-----------+----------+--------+----------+---------+
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 6
+6. withdraw - Bank Application
+--------------------------------------
+Name: 0000000
+Account Number: 
+Amount: 
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 6
+6. withdraw - Bank Application
+--------------------------------------
+Name: ankush
+Account Number: 0000000
+Amount: 0 1
+Insufficient funds
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 7
+7. deposit - Bank Application
+--------------------------------------
+Name: ankush
+Account Number: 0000000
+Amount: 100
+Status changed!
+Deposit complete!
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 11
+11. show_customer - Bank Application
+--------------------------------------
+Name: ankush
++-----------+----------+--------+----------+---------+
+| Customer# |   Name   | Status | Account# | Balance |
++===========+==========+========+==========+=========+
+|      00000|    ankush|       1|   0000000|   100.00|
++-----------+----------+--------+----------+---------+
+|      00000|    ankush|       1|   0000001|   100.00|
++-----------+----------+--------+----------+---------+
+|      00000|    ankush|       1|   0010000|   100.00|
++-----------+----------+--------+----------+---------+
+|                            Total Balance =   300.00|
++-----------+----------+--------+----------+---------+
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 10
+10. show_all_branches - Bank Application
+--------------------------------------
+     Branch#    |     Address     
+================+=================
+             000|                a
++----------+-----------+---------+
+| Account# | Customer# | Balance |
++==========+===========+=========+
+|   0000001|      00000|   100.00|
++----------+-----------+---------+
+|   0000000|      00000|   100.00|
++----------+-----------+---------+
+|        Total Balance =   200.00|
++----------+-----------+---------+
+             001|                b
++----------+-----------+---------+
+| Account# | Customer# | Balance |
++==========+===========+=========+
+|   0010000|      00000|   100.00|
++----------+-----------+---------+
+|        Total Balance =   100.00|
++----------+-----------+---------+
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 8
+8. transfer - Bank Application
+--------------------------------------
+Name: ankush
+Account Number from: 1111111
+Account Number to: 1111111 7
+Amount: 100
+Invalid account number
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 9
+9. show_branch - Bank Application
+--------------------------------------
+Address or Branch Number: a 000   a
++----------+-----------+---------+
+| Account# | Customer# | Balance |
++==========+===========+=========+
+|   0000001|      00000|   100.00|
++----------+-----------+---------+
+|   0000000|      00000|   100.00|
++----------+-----------+---------+
+|        Total Balance =   200.00|
++----------+-----------+---------+
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 10
+10. show_all_branches - Bank Application
+--------------------------------------
+     Branch#    |     Address     
+================+=================
+             000|                a
++----------+-----------+---------+
+| Account# | Customer# | Balance |
++==========+===========+=========+
+|   0000001|      00000|   100.00|
++----------+-----------+---------+
+|   0000000|      00000|   100.00|
++----------+-----------+---------+
+|        Total Balance =   200.00|
++----------+-----------+---------+
+             001|                b
++----------+-----------+---------+
+| Account# | Customer# | Balance |
++==========+===========+=========+
+|   0010000|      00000|   100.00|
++----------+-----------+---------+
+|        Total Balance =   100.00|
++----------+-----------+---------+
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 8
+8. transfer - Bank Application
+--------------------------------------
+Name: ankush
+Account Number from: 0000001
+Account Number to: 0000000
+Amount: 50
+Status changed!
+Status changed!
+Transfer complete!
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 10
+10. show_all_branches - Bank Application
+--------------------------------------
+     Branch#    |     Address     
+================+=================
+             000|                a
++----------+-----------+---------+
+| Account# | Customer# | Balance |
++==========+===========+=========+
+|   0000001|      00000|    50.00|
++----------+-----------+---------+
+|   0000000|      00000|   150.00|
++----------+-----------+---------+
+|        Total Balance =   200.00|
++----------+-----------+---------+
+             001|                b
++----------+-----------+---------+
+| Account# | Customer# | Balance |
++==========+===========+=========+
+|   0010000|      00000|   100.00|
++----------+-----------+---------+
+|        Total Balance =   100.00|
++----------+-----------+---------+
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 4
+4. setup_customer - Bank Application
+--------------------------------------
+Name: ankush
+Address or Branch Number: 1 001
+Unable to setup customer, as it already exists.
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 6
+6. withdraw - Bank Application
+--------------------------------------
+Name: ankush
+Account Number: 1 000000000  
+Amount: -100
+Negative amount can not be withdrawn.
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 7
+7. deposit - Bank Application
+--------------------------------------
+Name: 0000000
+Account Number: 
+Amount: 
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 7
+7. deposit - Bank Application
+--------------------------------------
+Name: 0 ankush
+Account Number: 0000000
+Amount: 100   -100
+Negative amount can not be deposited.
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 8
+8. transfer - Bank Application
+--------------------------------------
+Name: ankush
+Account Number from: 0000000
+Account Number to: 0000001
+Amount: 1 -100
+Negative amount can not be transfered.
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: 11
+11. show_customer - Bank Application
+--------------------------------------
+Name: ankush
++-----------+----------+--------+----------+---------+
+| Customer# |   Name   | Status | Account# | Balance |
++===========+==========+========+==========+=========+
+|      00000|    ankush|       1|   0000000|   150.00|
++-----------+----------+--------+----------+---------+
+|      00000|    ankush|       1|   0000001|    50.00|
++-----------+----------+--------+----------+---------+
+|      00000|    ankush|       1|   0010000|   100.00|
++-----------+----------+--------+----------+---------+
+|                            Total Balance =   300.00|
++-----------+----------+--------+----------+---------+
+Press any key to continue...
+
+Main Menu - Welcome - Bank Application
+--------------------------------------
+1. open_branch
+2. close_branch
+3. setup_account
+4. setup_customer
+5. close_account
+6. withdraw
+7. deposit
+8. transfer
+9. show_branch
+10. show_all_branches
+11. show_customer
+Any other Integer to Quit
+Choose what to action to preform: -1
+]0;fedora@COMP4003:~/AnkushVarshneyaComp4003Assignment4[fedora@COMP4003 AnkushVarshneyaComp4003Assignment4]$ exit
+
+Script done on Sun 15 Nov 2015 12:31:44 AM UTC

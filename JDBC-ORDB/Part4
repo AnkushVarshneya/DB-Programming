@@ -1,0 +1,591 @@
+Script started on Tue 24 Nov 2015 05:09:46 PM UTC
+]0;fedora@COMP4003:~/AnkushVarshneyaComp4003Assignment5[?1034h[fedora@COMP4003 AnkushVarshneyaComp4003Assignment5]$ sqlplusjavac as5p4.java
+]0;fedora@COMP4003:~/AnkushVarshneyaComp4003Assignment5[fedora@COMP4003 AnkushVarshneyaComp4003Assignment5]$ javac as5p4.java[9Psqlplusjavac as5p4.java[9Psqlplus[3Pexitjava as5p4
+Connecting to JDBC...
+JDBC connected.
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 8
+8. run_tests - Register System
+-------------------------------------
+cleaned data base.
+Course inserted with c# = 0
+Unable to insert course, course exists!
+Course Deleted!
+Unable to delete course, course does not exist!
+student inserted with s# = 0
+Unable to insert student, student exists!
+Student Deleted!
+Unable to delete student, student does not exist!
+student inserted with s# = 0
+Unable to insert student, student exists!
+Student Deleted!
+Unable to delete student, student does not exist!
+Course inserted with c# = 0
+Course inserted with c# = 1
+student inserted with s# = 0
+student inserted with s# = 1
+Unable to take course, student does not exists!
+Unable to take course, student does not exists!
+Unable to take course, course does not exists!
+Student enrolled!
+Student enrolled!
+Unable to take course, student already enrolled!
+Unable to take course, student already enrolled!
+Unable to delete student, enrolled in courses!
+Unable to delete student, enrolled in courses!
+Unable to delete course, students enrolled!
+Unable to delete course, students enrolled!
+Unable to add prerequisite, and both are the same course!
+Unable to add prerequisite, course: Envalid doesn't exists!
+Unable to add prerequisite, course: Envalid doesn't exists!
+Unable to add prerequisite, and both are the same course!
+Unable to add prerequisite, and both are the same course!
+Added prerequisite!
+Unable to drop course, student does not exists!
+Unable to drop course, student does not exists!
+Unable to drop course, course does not exists!
+Student disenrolled!
+Student disenrolled!
+Unable to drop course, student not enrolled!
+Unable to drop course, student not enrolled!
+Unable to delete course, its a prerequisite!
+Course Deleted!
+Course Deleted!
+Student Deleted!
+Student Deleted!
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 1
+1. insert_course - Register System
+------------------------------------
+Course Name: A MAth   ath
+Course inserted with c# = 0
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 1
+1. insert_course - Register System
+------------------------------------
+Course Name: Chem
+Course inserted with c# = 1
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 1
+1. insert_course - Register System
+------------------------------------
+Course Name: Comp
+Course inserted with c# = 2
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 1
+1. insert_course - Register System
+------------------------------------
+Course Name: Java
+Course inserted with c# = 3
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 1
+1. insert_course - Register System
+------------------------------------
+Course Name: OS
+Course inserted with c# = 4
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 1
+1. insert_course - Register System
+------------------------------------
+Course Name: DBMS
+Course inserted with c# = 5
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 2
+2. delete_course - Register System
+-------------------------------------
+Course Name: K
+Unable to delete course, course does not exist!
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 7
+7. add_prerequisite - Register System
+-------------------------------------
+Course Name(prereq): Comp    Math
+Course Name: Comp
+Added prerequisite!
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 7
+7. add_prerequisite - Register System
+-------------------------------------
+Course Name(prereq): Chem
+Course Name: Comp
+Added prerequisite!
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 7
+7. add_prerequisite - Register System
+-------------------------------------
+Course Name(prereq): Comp
+Course Name: Os
+Unable to add prerequisite, course: Os doesn't exists!
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 7
+7. add_prerequisite - Register System
+-------------------------------------
+Course Name(prereq): Comp
+Course Name: OS
+Added prerequisite!
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 7
+7. add_prerequisite - Register System
+-------------------------------------
+Course Name(prereq): Java
+Course Name: OS
+Added prerequisite!
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 7
+7. add_prerequisite - Register System
+-------------------------------------
+Course Name(prereq): Java
+Course Name: DBMB^H   S
+Added prerequisite!
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 7
+7. add_prerequisite - Register System
+-------------------------------------
+Course Name(prereq): OS
+Course Name: M^HDBMS
+Unable to add prerequisite, course: MDBMS doesn't exists!
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 7
+7. add_prerequisite - Register System
+-------------------------------------
+Course Name(prereq): JAVA
+Course Name: DBMS
+Unable to add prerequisite, course: JAVA doesn't exists!
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 7
+7. add_prerequisite - Register System
+-------------------------------------
+Course Name(prereq): Java
+Course Name: DBMS
+Unable to add prerequisite, as its already a prerequisite!
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 1 3
+3. insert_student - Register System
+-------------------------------------
+Student Name: Alan
+Gender (M or F): M
+Phone: 123
+Student (G or U): U
+student inserted with s# = 0
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 4
+4. delete_student - Register System
+-------------------------------------
+Student Name: Alan
+Student Deleted!
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 3
+3. insert_student - Register System
+-------------------------------------
+Student Name: Alan
+Gender (M or F): M
+Phone: 1
+Student (G or U): G
+student inserted with s# = 0
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 4
+4. delete_student - Register System
+-------------------------------------
+Student Name: Alan
+Student Deleted!
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 1
+1. insert_course - Register System
+------------------------------------
+Course Name: Alan
+Course inserted with c# = 6
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 2
+2. delete_course - Register System
+-------------------------------------
+Course Name: Alan
+Course Deleted!
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 5 3
+3. insert_student - Register System
+-------------------------------------
+Student Name: Alank     Ankush
+Gender (M or F): M]  M] 
+Phone: 1
+Student (G or U): G U
+student inserted with s# = 0
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 5
+5. take_course - Register System
+-------------------------------------
+Student Name: Ankush
+Course Name: Chem
+Student enrolled!
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 5
+5. take_course - Register System
+-------------------------------------
+Student Name: Ankush
+Course Name: Chem
+Unable to take course, student already enrolled!
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 6
+6. drop_course - Register System
+-------------------------------------
+Student Name: Ankush
+Course Name: Chem
+Student disenrolled!
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 6
+6. drop_course - Register System
+-------------------------------------
+Student Name: Ankush
+Course Name: Chem
+Unable to drop course, student not enrolled!
+Press any key to continue...
+
+Main Menu - Welcome - Register System
+-------------------------------------
+1. insert_course
+2. delete_course
+3. insert_student
+4. delete_student
+5. take_course
+6. drop_course
+7. add_prerequisite
+8. run_tests
+Any other Integer to Quit
+Choose what to action to preform: 8 9
+]0;fedora@COMP4003:~/AnkushVarshneyaComp4003Assignment5[fedora@COMP4003 AnkushVarshneyaComp4003Assignment5]$ exit
+
+Script done on Tue 24 Nov 2015 05:18:12 PM UTC

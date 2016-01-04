@@ -1,0 +1,313 @@
+-----------------------------------------
+-- Author: Ankush Varshneya (100853074)
+-- Assignment#5 Part#2
+-- This SQL script populates the tables.
+-----------------------------------------
+
+-- set env
+SET SERVEROUTPUT ON SIZE 10000;
+SET LINESIZE 1000;
+SET PAGESIZE 1000;
+
+-- insert courses
+
+INSERT INTO course VALUES(course_t(
+  '1',
+  'Math',
+  course_nt(),
+  student_nt()
+));
+
+INSERT INTO course VALUES(course_t(
+  '2',
+  'Chem',
+  course_nt(),
+  student_nt()
+));
+
+INSERT INTO course VALUES(course_t(
+  '3',
+  'Comp',
+  course_nt(),
+  student_nt()
+));
+
+INSERT INTO course VALUES(course_t(
+  '4',
+  'Java',
+  course_nt(),
+  student_nt()
+));
+
+INSERT INTO course VALUES(course_t(
+  '5',
+  'OS',
+  course_nt(),
+  student_nt()
+));
+
+INSERT INTO course VALUES(course_t(
+  '6',
+  'DBMS',
+  course_nt(),
+  student_nt()
+));
+
+-- insert prereqs
+
+INSERT INTO TABLE (
+  SELECT C.prereqcourses
+  FROM course C
+  WHERE C.name = 'Comp'
+)
+SELECT REF(P)
+FROM course P
+WHERE P.NAME IN ('Math', 'Chem');
+
+INSERT INTO TABLE (
+  SELECT C.prereqcourses
+  FROM course C
+  WHERE C.name = 'Java'
+)
+SELECT REF(P)
+FROM course P
+WHERE P.NAME IN ('Comp');
+
+INSERT INTO TABLE (
+  SELECT C.prereqcourses
+  FROM course C
+  WHERE C.name = 'OS'
+)
+SELECT REF(P)
+FROM course P
+WHERE P.NAME IN ('Comp');
+
+INSERT INTO TABLE (
+  SELECT C.prereqcourses
+  FROM course C
+  WHERE C.name = 'DBMS'
+)
+SELECT REF(P)
+FROM course P
+WHERE P.NAME IN ('Java', 'OS');
+
+-- insert students
+
+INSERT INTO Student values(ugrad_t(
+  '1',
+  'Alan',
+  'M',
+  course_nt(),
+  '111-111-1111'
+));
+  
+INSERT INTO Student values(ugrad_t(
+  '2',
+  'Beth',
+  'F',
+  course_nt(),
+  '222-222-2222'
+));
+
+INSERT INTO Student values(ugrad_t(
+  '3',
+  'Cole',
+  'M',
+  course_nt(),
+  '333-333-3333'
+));
+  
+INSERT INTO Student values(ugrad_t(
+  '4',
+  'Dora',
+  'F',
+  course_nt(),
+  '444-444-4444'
+));  
+  
+INSERT INTO Student values(grad_t(
+  '5',
+  'Jack',
+  'M',
+  course_nt(),
+  '555-555-5555'
+));
+  
+INSERT INTO Student values(grad_t(
+  '6',
+  'Lisa',
+  'F',
+  course_nt(),
+  '666-666-6666'
+));  
+  
+INSERT INTO Student values(grad_t(
+  '7',
+  'Mike',
+  'M',
+  course_nt(),
+  '777-777-7777'
+));
+  
+INSERT INTO Student values(grad_t(
+  '8',
+  'Sara',
+  'F',
+  course_nt(),
+  '888-888-8888'
+));
+  
+-- insert students/courses enrolled
+
+INSERT INTO TABLE (
+  SELECT C.StudentsEnrolled
+  FROM course C
+  WHERE C.name = 'Math'
+)
+SELECT REF(S)
+FROM student S
+WHERE S.name = 'Alan';
+INSERT INTO TABLE (
+  SELECT S.CoursesEnrolled
+  FROM student S
+  WHERE S.name = 'Alan'
+)
+SELECT REF(C)
+FROM course C
+WHERE C.name = 'Math';
+
+INSERT INTO TABLE (
+  SELECT C.StudentsEnrolled
+  FROM course C
+  WHERE C.name = 'Chem'
+)
+SELECT REF(S)
+FROM student S
+WHERE S.name = 'Alan';
+INSERT INTO TABLE (
+  SELECT S.CoursesEnrolled
+  FROM student S
+  WHERE S.name = 'Alan'
+)
+SELECT REF(C)
+FROM course C
+WHERE C.name = 'Chem';
+
+INSERT INTO TABLE (
+  SELECT C.StudentsEnrolled
+  FROM course C
+  WHERE C.name = 'Comp'
+)
+SELECT REF(S)
+FROM student S
+WHERE S.name = 'Dora';
+INSERT INTO TABLE (
+  SELECT S.CoursesEnrolled
+  FROM student S
+  WHERE S.name = 'Dora'
+)
+SELECT REF(C)
+FROM course C
+WHERE C.name = 'Comp';
+
+INSERT INTO TABLE (
+  SELECT C.StudentsEnrolled
+  FROM course C
+  WHERE C.name = 'Java'
+)
+SELECT REF(S)
+FROM student S
+WHERE S.name = 'Cole';
+INSERT INTO TABLE (
+  SELECT S.CoursesEnrolled
+  FROM student S
+  WHERE S.name = 'Cole'
+)
+SELECT REF(C)
+FROM course C
+WHERE C.name = 'Java';
+
+INSERT INTO TABLE (
+  SELECT C.StudentsEnrolled
+  FROM course C
+  WHERE C.name = 'Java'
+)
+SELECT REF(S)
+FROM student S
+WHERE S.name = 'Jack';
+INSERT INTO TABLE (
+  SELECT S.CoursesEnrolled
+  FROM student S
+  WHERE S.name = 'Jack'
+)
+SELECT REF(C)
+FROM course C
+WHERE C.name = 'Java';
+
+INSERT INTO TABLE (
+  SELECT C.StudentsEnrolled
+  FROM course C
+  WHERE C.name = 'OS'
+)
+SELECT REF(S)
+FROM student S
+WHERE S.name = 'Lisa';
+INSERT INTO TABLE (
+  SELECT S.CoursesEnrolled
+  FROM student S
+  WHERE S.name = 'Lisa'
+)
+SELECT REF(C)
+FROM course C
+WHERE C.name = 'OS';
+
+INSERT INTO TABLE (
+  SELECT C.StudentsEnrolled
+  FROM course C
+  WHERE C.name = 'OS'
+)
+SELECT REF(S)
+FROM student S
+WHERE S.name = 'Sara';
+INSERT INTO TABLE (
+  SELECT S.CoursesEnrolled
+  FROM student S
+  WHERE S.name = 'Sara'
+)
+SELECT REF(C)
+FROM course C
+WHERE C.name = 'OS';
+
+INSERT INTO TABLE (
+  SELECT C.StudentsEnrolled
+  FROM course C
+  WHERE C.name = 'DBMS'
+)
+SELECT REF(S)
+FROM student S
+WHERE S.name = 'Jack';
+INSERT INTO TABLE (
+  SELECT S.CoursesEnrolled
+  FROM student S
+  WHERE S.name = 'Jack'
+)
+SELECT REF(C)
+FROM course C
+WHERE C.name = 'DBMS';
+
+INSERT INTO TABLE (
+  SELECT C.StudentsEnrolled
+  FROM course C
+  WHERE C.name = 'DBMS'
+)
+SELECT REF(S)
+FROM student S
+WHERE S.name = 'Mike';
+INSERT INTO TABLE (
+  SELECT S.CoursesEnrolled
+  FROM student S
+  WHERE S.name = 'Mike'
+)
+SELECT REF(C)
+FROM course C
+WHERE C.name = 'DBMS';

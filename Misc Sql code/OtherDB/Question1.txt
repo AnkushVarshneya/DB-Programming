@@ -1,0 +1,348 @@
+Problem 1.1
+
+English:
+Produce a table consisting of the names and addresses of the subscribers and their phone numbers.
+
+Query:
+SELECT  name,
+		address,
+		"("||areacode||") "||officecode||"-"||stationcode as phonenumber
+	FROM subscribers NATURAL JOIN lines;
+
+Results:
+
+name         address       phonenumber
+-----------  ------------  --------------
+Mats Sundin  45 Elgin St.  (613) 134-0001
+Jason Allis  46 Elgin St.  (613) 136-0002
+Eric Lindro  48 Elgin St.  (613) 156-0003
+Bryan MacCa  23 MacLeod S  (613) 220-0004
+Steve Nash   1129 Otterso  (613) 221-0005
+Michael Jor  1223 Carling  (613) 222-0006
+Roger Cleme  14 Hopewell   (613) 223-0007
+Jack Morris  23 Prince of  (613) 226-0008
+Roberto Alo  55 Moodie Dr  (613) 227-0009
+Joe Carter   18 Summerset  (613) 229-0010
+Wayne Grekz  45 Merviale.  (613) 310-0011
+George Bell  46 Colon By   (613) 322-0012
+Eric Staal   423 Riversid  (613) 333-0013
+Roy Hallada  23 Ogilvie R  (613) 334-0014
+Mario Lemie  1129 Bank Dr  (613) 389-0015
+Patrick Roy  1223 Greenba  (613) 457-0016
+Martin Brod  14 Baseline   (613) 489-0017
+Homer Simps  123 Prince o  (613) 523-0018
+Bart Simpso  155 Moodie D  (613) 568-0019
+Joe Johnson  21 Sussex Dr  (613) 578-0020
+Vince Carte  45 Hunt Club  (613) 623-0021
+Ed Belfour   46 Fisher St  (613) 645-0022
+Bobby Orr    48 Prince Ed  (613) 657-0023
+Bobby Hull   23 Wellingto  (613) 712-0024
+Gordie Howe  1129 Preston  (613) 728-0025
+Larry Bird   1223 Warden   (613) 798-0026
+Mark Messie  14 Finch Ave  (416) 219-0027
+Wade Redden  23 Steeles A  (416) 331-0028
+Sidney Cros  55 Sheppard   (416) 333-0029
+Peter Forsb  1 Kennedy Dr  (416) 334-0030
+Paul Kariya  45 Midland.   (416) 756-0031
+Rob Blake    12 19th Ave.  (705) 221-0032
+Chris Prong  48 16th Ave.  (905) 347-0033
+Gary Robert  23 John St.   (905) 657-0034
+Alex Mogily  1129 14th Av  (905) 819-0035
+Scott Gomez  1223 Montrea  (819) 223-0036
+Frank Thoma  14 Hull Ave.  (819) 227-0037
+Barry Bonds  23 Hood Rd.   (705) 221-0038
+Hank Aaron   55 Denison A  (819) 223-0039
+Babe Ruth    1 Old Kenned  (819) 227-0040
+Ted William  45 Birchmoun  (905) 347-0041
+Chris Bosh   46 Queens Av  (905) 657-0042
+Steve Sampr  448 St Clare  (905) 819-0043
+Kobe Bryan   23 Bayview S  (416) 219-0044
+Kevin Garne  59 Mike Myer  (416) 331-0045
+Larry Brown  99 Blue Jays  (416) 333-0046
+Brooke Shie  69 College A  (416) 334-0047
+Matt Stajan  50 LakeShore  (416) 756-0048
+Tie Domi     89 Spidina R  (705) 221-0049
+Tevor Kidd   30 McCowan A  (819) 227-0050
+
+Problem 1.2
+
+English:
+Produce a table that lists all the area code, office code combinations and the number of subscribers with that area code, office code combination.
+
+Query:
+SELECT areacode, officecode, count(*) as num_of_subscribers
+	FROM LINES GROUP BY areacode, officecode;
+
+Results:
+areacode    officecode  num_of_subscribers
+----------  ----------  ------------------
+416         219         2
+416         331         2
+416         333         2
+416         334         2
+416         756         2
+613         134         1
+613         136         1
+613         156         1
+613         220         1
+613         221         1
+613         222         1
+613         223         1
+613         226         1
+613         227         1
+613         229         1
+613         310         1
+613         322         1
+613         333         1
+613         334         1
+613         389         1
+613         457         1
+613         489         1
+613         523         1
+613         568         1
+613         578         1
+613         623         1
+613         645         1
+613         657         1
+613         712         1
+613         728         1
+613         798         1
+705         221         3
+819         223         2
+819         227         3
+905         347         2
+905         657         2
+905         819         2
+
+Problem 1.3
+
+English:
+List the names of all the subscribers who are originators of a call to someone who is also a subscriber.
+
+Query:
+/* check if the called number is in the lines table */
+/* then join that tables with the subscribers ON */
+/* orig=portid so get names of all the subscribers */
+/* who originated a call, every thing else is ignored */
+SELECT name FROM
+	(SELECT * FROM CALLS
+		WHERE area||offi||stn IN
+		(SELECT areacode||officecode||stationcode
+			FROM lines)
+	)
+	JOIN subscribers ON orig=portid;
+
+Results:
+name
+-----------
+Mats Sundin
+Jason Allis
+Homer Simps
+Michael Jor
+Ed Belfour
+Jack Morris
+Vince Carte
+Bryan MacCa
+Eric Staal
+
+Problem 1.4
+
+English:
+Find the names and address of all subscribers who subscribe to all of the available services
+
+Query:
+/* join the lines, subscribers, service_subscribers tables */
+/* do a group by portid and count services that match's # of all services */
+SELECT name, address
+	FROM lines
+		NATURAL JOIN subscribers
+		JOIN service_subscribers ON portid=line
+	GROUP BY portid
+		HAVING COUNT(service) =
+			(SELECT COUNT(*) FROM SERVICES);
+
+Results:
+there where no results ie no subscribers who subscribe to all of the available services
+
+Problem 1.5
+
+English:
+Find the names of all the subscribers who subscribe to at least two services.
+
+Query:
+/* join the lines, subscribers, service_subscribers tables */
+/* do a group by portid and count services >=2 */
+SELECT name
+	FROM lines
+		NATURAL JOIN subscribers
+		JOIN service_subscribers ON portid=line
+	GROUP BY portid
+		HAVING COUNT(service) >= 2;
+
+Results:
+name
+-----------
+Mats Sundin
+Jason Allis
+Eric Lindro
+Bryan MacCa
+Michael Jor
+Roger Cleme
+Roberto Alo
+Joe Carter
+George Bell
+Eric Staal
+Mario Lemie
+Patrick Roy
+Homer Simps
+Bart Simpso
+Vince Carte
+Gordie Howe
+Mark Messie
+Wade Redden
+Sidney Cros
+Peter Forsb
+Paul Kariya
+Chris Prong
+Gary Robert
+Scott Gomez
+Frank Thoma
+Hank Aaron
+Babe Ruth
+Chris Bosh
+Steve Sampr
+Kevin Garne
+Larry Brown
+Matt Stajan
+Tie Domi
+
+Problem 1.6
+
+English:
+Produce a table that lists the most popular service (or services). That is, give the name of the service that has the most subscribers.
+
+Query:
+/* join the lines, subscribers, service_subscribers tables */
+/* group by service and then select the max from that table*/
+
+SELECT service as most_popular_service
+	FROM lines
+		NATURAL JOIN subscribers
+		JOIN service_subscribers ON portid=line
+	GROUP BY service
+		HAVING COUNT(portid) =
+			(SELECT	MAX(num)
+				FROM
+				(SELECT service, COUNT(portid) as num
+					FROM lines
+						NATURAL JOIN subscribers
+						JOIN service_subscribers ON portid=line
+					GROUP BY service));
+Results:
+most_popular_service
+--------------------
+MSG
+
+Problem 1.7
+
+English:
+Find all the trunks that could be used to route a call to the following  Toronto number (416) 333-1347. (For this query it does not matter if the trunks are all busy or have idle channels, we only want to find the actual trunk id's that could be used to route the call.)
+
+Query:
+SELECT * FROM trunk_routes 
+	WHERE
+		area in ('416', '000') and
+		office in ('333', '000');
+
+Results:
+portid      area        office
+----------  ----------  ----------
+102         416         000
+102         416         333
+106         416         000
+107         000         000
+
+Problem 1.8
+
+English:
+Write an SQL query that would find if the line with phone number (613) 712-0024 is currently available to take a call (that it is IDLE).
+
+Query:
+SELECT	"("||areacode||") "||officecode||"-"||stationcode as line,
+		state
+	FROM lines
+		WHERE
+			areacode='613' and
+			officecode='712' and
+			stationcode='0024';
+
+Results:
+/*n since state is busy it's not idle */
+line            state
+--------------  ----------
+(613) 712-0024  BUSY
+
+
+
+Problem 1.9
+
+English:
+Write an SQL query that will produce in one table a list of all the acceptable trunks that can be used to route a call to the 416 area code, office code 334. This query should list the trunks in the order of preference. (The answer should list trunks routes 416,334 then 416,000 then 000,000)
+
+Query:
+/* find all the distinct trunk routes and order desc */
+/* group concat on the area+office code to show as list */
+SELECT GROUP_CONCAT("("||area||","||office||")") AS list
+	FROM
+	(SELECT DISTINCT area, office
+		FROM trunk_routes 
+			WHERE
+				area in ('416', '000') and
+				office in ('334', '000')
+			ORDER BY
+				area DESC,
+				office DESC);
+
+Results:
+list
+-----------------------------
+(416,334),(416,000),(000,000)
+
+Problem 1.10
+
+English:
+Produce a table that lists the name of all the service-subscribers that subscribe to at least all the same services as Jason Allison subscribes to but possibly others as well. Jason Allison rents the line with portID=2.
+
+Query:
+/* join the lines, subscribers, service_subscribers tables */
+/* group by portid and only list names of those with service same as portid=2 or more */
+SELECT name
+	FROM lines
+		NATURAL JOIN subscribers
+		JOIN 
+			(SELECT *
+				FROM service_subscribers
+				ORDER BY service ASC)
+		ON portid=line
+	GROUP BY portid
+		HAVING GROUP_CONCAT(service,"%") LIKE
+			(SELECT "%"||GROUP_CONCAT(service,"%")||"%"
+				FROM lines
+					NATURAL JOIN subscribers
+					JOIN 
+						(SELECT *
+							FROM service_subscribers
+							ORDER BY service ASC)
+						ON portid=line
+				GROUP BY portid
+					HAVING portid=2);
+
+Results:
+
+name
+-------------
+Jason Allison
+Michael Jorda
+Joe Carter
+Homer Simpson
+Matt Stajan

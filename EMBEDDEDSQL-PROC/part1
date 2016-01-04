@@ -1,0 +1,26 @@
+Script started on Sat 03 Oct 2015 11:44:37 PM UTC
+]0;fedora@COMP4003:~/Assignment2[?1034h[fedora@COMP4003 Assignment2]$ proc Part1.pc
+
+Pro*C/C++: Release 11.2.0.1.0 - Production on Sat Oct 3 23:44:44 2015
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+
+System default option values taken from: /u01/app/oracle/product/11.2.0/xe/precomp/admin/pcscfg.cfg
+
+]0;fedora@COMP4003:~/Assignment2[fedora@COMP4003 Assignment2]$ cc -c Part1.c -I/usr/include/oracle/11.2/client64
+"Part1.c", line 117: warning: no explicit type given
+"Part1.c", line 119: warning: no explicit type given
+"Part1.c", line 121: warning: no explicit type given
+"Part1.c", line 122: warning: no explicit type given
+"Part1.c", line 123: warning: no explicit type given
+"Part1.c", line 557: warning: newline not last character in file
+]0;fedora@COMP4003:~/Assignment2[fedora@COMP4003 Assignment2]$ cc -o Part1 Part1.o -L/usr/lib/oracle/11.2/client64 /lib -lclntsh
+]0;fedora@COMP4003:~/Assignment2[fedora@COMP4003 Assignment2]$ ./Part1
+Connected to ORACLE
+Table created 
+Table created 
+Table created 
+Bye!
+]0;fedora@COMP4003:~/Assignment2[fedora@COMP4003 Assignment2]$ exit
+
+Script done on Sat 03 Oct 2015 11:45:11 PM UTC

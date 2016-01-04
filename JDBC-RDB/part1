@@ -1,0 +1,12 @@
+Script started on Sun 15 Nov 2015 12:19:12 AM UTC
+]0;fedora@COMP4003:~/AnkushVarshneyaComp4003Assignment4[?1034h[fedora@COMP4003 AnkushVarshneyaComp4003Assignment4]$ sqlplusjava Part1c Part1.java
+]0;fedora@COMP4003:~/AnkushVarshneyaComp4003Assignment4[fedora@COMP4003 AnkushVarshneyaComp4003Assignment4]$ javac Part1.java[9Psqlplusjavac Part1.java[9Psqlplusjava Part1
+Connecting to JDBC...
+JDBC connected.
+
+Branch table created.
+Customer table created.
+Account table created.
+]0;fedora@COMP4003:~/AnkushVarshneyaComp4003Assignment4[fedora@COMP4003 AnkushVarshneyaComp4003Assignment4]$ java Part1c Part1.java[9Psqlplus[K[K[K[K[K[K[Kexit
+
+Script done on Sun 15 Nov 2015 12:19:32 AM UTC

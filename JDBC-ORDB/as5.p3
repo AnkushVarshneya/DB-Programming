@@ -1,0 +1,133 @@
+-----------------------------------------
+-- Author: Ankush Varshneya (100853074)
+-- Assignment#5 Part#3
+-- List queries
+-----------------------------------------
+
+-- set env
+SET SERVEROUTPUT ON SIZE 10000;
+SET LINESIZE 1000;
+SET PAGESIZE 1000;
+
+-- 1. List course names and their prerequisites unnested.
+SELECT DISTINCT C.name AS cname, VALUE(P).name AS pcname
+FROM Course C, TABLE(C.preReqCourses) P;
+  
+-- 2. List course names and their prerequisites nested.
+
+-- need a nested object/table first
+CREATE TYPE pc_t  AS OBJECT (name VARCHAR2(10));
+/
+CREATE TYPE pc_nt  AS TABLE OF pc_t;
+/
+
+SELECT C.name AS cname,
+  CAST(
+    MULTISET(
+      SELECT DISTINCT VALUE(P).name
+      FROM TABLE(C.preReqCourses) P
+    ) AS pc_nt
+  ) AS pcname
+FROM Course C;
+
+-- 3. List course names and the number of your prerequisites.
+SELECT DISTINCT C.name AS cname, Count(VALUE(P).name) AS numOfPreReqs
+FROM Course C, TABLE(C.preReqCourses) P
+GROUP BY C.name;
+
+-- 4. List course names for the courses that has at least two prerequisites.
+SELECT DISTINCT C.name AS cname
+FROM Course C, TABLE(C.preReqCourses) P
+GROUP BY C.name
+HAVING Count(VALUE(P).name) >= 2;
+
+-- 5. List student names and all courses they take nested.
+
+-- need a nested object/table first
+CREATE TYPE c_t  AS OBJECT (name VARCHAR2(10));
+/
+CREATE TYPE c_nt  AS TABLE OF pc_t;
+/
+
+SELECT S.name AS sname,
+  CAST(
+    MULTISET(
+      SELECT DISTINCT VALUE(C).name
+      FROM TABLE(S.coursesEnrolled) C
+    ) AS c_nt
+  ) AS cname
+FROM Student S;
+
+-- 6. List course name and all male students nested.
+
+-- need a nested object/table first
+CREATE TYPE  ms_t AS OBJECT (name VARCHAR2(10));
+/
+CREATE TYPE  ms_nt AS TABLE OF ms_t;
+/
+
+SELECT C.name AS cname,
+  CAST(
+    MULTISET(
+      SELECT DISTINCT VALUE(S).name
+      FROM TABLE(C.studentsEnrolled) S
+      WHERE VALUE(S).gender = 'M'
+    ) AS ms_nt
+  ) AS msname
+FROM Course C;
+
+-- 7. List course names and all grad students nested.
+
+-- need a nested object/table first
+CREATE TYPE gs_t  AS OBJECT (name VARCHAR2(10));
+/
+CREATE TYPE gs_nt  AS TABLE OF gs_t;
+/
+
+SELECT C.name AS cname,
+  CAST(
+    MULTISET(
+      SELECT DISTINCT VALUE(S).name
+      FROM TABLE(C.studentsEnrolled) S
+      WHERE DEREF(VALUE(S)) IS OF(grad_t)
+    ) AS gs_nt
+  ) AS gsname
+FROM Course C;
+
+-- 8. List course names and all male grad students nested.
+
+-- need a nested object/table first
+CREATE TYPE mgs_t  AS OBJECT (name VARCHAR2(10));
+/
+CREATE TYPE mgs_nt  AS TABLE OF mgs_t;
+/
+
+SELECT C.name AS cname,
+  CAST(
+    MULTISET(
+      SELECT DISTINCT VALUE(S).name
+      FROM TABLE(C.studentsEnrolled) S
+      WHERE VALUE(S).gender = 'M'
+        AND DEREF(VALUE(S)) IS OF(grad_t)
+    ) AS mgs_nt
+  ) AS mgsname
+FROM Course C;
+
+-- 9. List the courses that only grad students take
+SELECT DISTINCT C.name AS cname
+FROM Course C, TABLE(C.studentsEnrolled) S
+WHERE C.name NOT IN (
+  SELECT DISTINCT VALUE(C1).name AS cname
+  FROM Student S1, TABLE(S1.coursesEnrolled) C1
+  WHERE VALUE(S1) IS OF(ugrad_t)
+);
+
+-- 10. List the courses that only male grad students take.
+SELECT DISTINCT C.name AS cname
+FROM Course C, TABLE(C.studentsEnrolled) S
+WHERE VALUE(S).gender = 'M'
+  AND C.name NOT IN (
+  SELECT DISTINCT VALUE(C1).name AS cname
+  FROM Student S1, TABLE(S1.coursesEnrolled) C1
+  WHERE VALUE(S1) IS OF(ugrad_t)
+);

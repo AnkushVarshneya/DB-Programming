@@ -1,0 +1,92 @@
+/*****************************************************************
+Author: Ankush Varshneya (100853074)
+Assignment#2 Part#1 - Dynamic SQL Method 1
+
+1. proc Part1.pc
+2. cc -c Part1.c -I/usr/include/oracle/11.2/client64
+3. cc -o Part1 Part1.o -L/usr/lib/oracle/11.2/client64/lib -lclntsh
+4. ./Part1
+
+This program connects you to ORACLE.
+Then it creates all the needed tables.
+Note:
+  -Sql Statements have a limit of 1023 characters.
+*****************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+exec sql include sqlca;
+exec sql begin declare section;
+  char sqlstmt[1024];
+  char *MYID= "oracle/oracle11g";
+exec sql end declare section;
+
+int main() {
+  // Connect to Oracle implicitly
+  exec sql connect :MYID;
+  if (sqlca.sqlcode == 0)
+    printf("Connected to ORACLE\n");
+  else {
+    printf("Connect Failed\n");
+    exit(1);
+  }
+  
+  // Create table containing suppliers using dynamic method 1
+  strcpy(sqlstmt,
+    "CREATE TABLE Suppliers ("
+      "S#       VARCHAR(4)  PRIMARY KEY,"
+      "SNAME    VARCHAR(10) NOT NULL,"
+      "STATUS   INTEGER     NOT NULL,"
+      "CITY     VARCHAR(10) NOT NULL"
+    ")"
+  );
+  exec sql set transaction read write;
+  exec sql execute immediate :sqlstmt;
+  if (sqlca.sqlcode == 0)
+    printf("Table created \n");
+  else
+    printf("Table not created: %s \n", sqlca.sqlerrm.sqlerrmc);
+
+  // Create table containing parts using dynamic method 1
+  strcpy(sqlstmt,
+    "CREATE TABLE Parts ("
+      "P#       VARCHAR(4)  PRIMARY KEY,"
+      "PNAME    VARCHAR(10) NOT NULL,"
+      "COLOR    VARCHAR(10) NOT NULL,"
+      "WEIGHT   FLOAT       NOT NULL CHECK(WEIGHT > 0),"
+      "CITY     VARCHAR(10) NOT NULL"
+    ")"
+  );
+  exec sql set transaction read write;
+  exec sql execute immediate :sqlstmt;
+  if (sqlca.sqlcode == 0)
+    printf("Table created \n");
+  else
+    printf("Table not created: %s \n", sqlca.sqlerrm.sqlerrmc);
+
+  // Create table containing supplier-parts relation/info using dynamic method 1
+  strcpy(sqlstmt,
+    "CREATE TABLE SP ("
+    "S#   VARCHAR(4),"
+    "P#   VARCHAR(4),"
+    "QTY  INTEGER	NOT NULL CHECK(QTY >=0),"
+    "PRIMARY KEY (S#,P#),"
+    "FOREIGN KEY (S#) REFERENCES Suppliers(S#)"
+    "ON DELETE CASCADE,"
+    "FOREIGN KEY (P#) REFERENCES Parts(P#)"
+    "ON DELETE CASCADE"
+  ")"
+  );
+  exec sql set transaction read write;
+  exec sql execute immediate :sqlstmt;
+  if (sqlca.sqlcode == 0)
+    printf("Table created \n");
+  else
+    printf("Table not created: %s \n", sqlca.sqlerrm.sqlerrmc);
+    
+  exec sql commit release;
+  printf("Bye!\n");
+  exit(0);
+}

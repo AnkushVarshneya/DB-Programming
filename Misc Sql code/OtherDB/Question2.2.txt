@@ -1,0 +1,40 @@
+Problem 2.2 
+Provide a short discussion on why you believe your GUI is appropriate
+for the database you have decided to build. Describe it in terms
+of the intent of the database and the types of queries and updates
+you expect to be most important to its users.
+
+1. Users should be able to add a new phone to the database
+ (insert into statement is needed)
+
+2. Users should be able to update a phone in the database
+So if my phone is stolen or lost or I found it again
+then I should be able to change the status.
+Also if the model number was incorrect then I should be able to correct it.
+ (update set statement is needed)
+ 
+3. If I get rid of my phone I should be able to delete it.
+	(delete from statement is needed)
+
+4. In #1-2 I should be given only a list of models to choose from.
+	(select from models statement is needed)
+
+5. I should be able to double click on a phone and check the specs.
+	(Select from with join statement are needed)
+
+6. I should be able to search my phone by IMIE
+	and I should also be able to see all phones.
+	(select where statement is needed)
+	Also should be able to see specs of the model(s) the phone is.
+	(Select from where with join statement are needed)
+
+7. I should be able to search any model by model name
+	and I should also be able to see all models.
+	(select where statement is needed)
+	Also should be able to see specs of the model(s).
+	(Select from with join statement are needed)
+
+8. We should not be able to delete or add or update model information as that
+	is provided by a manufacture and can not be changed we can only buy a phone of it.
+
+My GUI allows #1-8 to be fulfilled

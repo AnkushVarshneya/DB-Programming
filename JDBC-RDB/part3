@@ -1,0 +1,184 @@
+Script started on Sun 15 Nov 2015 12:19:41 AM UTC
+]0;fedora@COMP4003:~/AnkushVarshneyaComp4003Assignment4[?1034h[fedora@COMP4003 AnkushVarshneyaComp4003Assignment4]$ java Part1c Part1.java[1P.java3.java
+]0;fedora@COMP4003:~/AnkushVarshneyaComp4003Assignment4[fedora@COMP4003 AnkushVarshneyaComp4003Assignment4]$ javac Part3.java[6P Part1[K2[K3
+Connecting to JDBC...
+JDBC connected.
+
+cleaned data base.
+1. open a branch in London
+Branch Opened with B# = 000
+2. open a branch in Paris
+Branch Opened with B# = 001
+3. open a branch in Toronto
+Branch Opened with B# = 002
+4. open a branch in New York
+Branch Opened with B# = 003
+5. show all branches
+     Branch#    |     Address     
+================+=================
+             000|           London
++----------+-----------+---------+
+| Account# | Customer# | Balance |
++==========+===========+=========+
+|        Total Balance =     0.00|
++----------+-----------+---------+
+             001|            Paris
++----------+-----------+---------+
+| Account# | Customer# | Balance |
++==========+===========+=========+
+|        Total Balance =     0.00|
++----------+-----------+---------+
+             002|          Toronto
++----------+-----------+---------+
+| Account# | Customer# | Balance |
++==========+===========+=========+
+|        Total Balance =     0.00|
++----------+-----------+---------+
+             003|         New York
++----------+-----------+---------+
+| Account# | Customer# | Balance |
++==========+===========+=========+
+|        Total Balance =     0.00|
++----------+-----------+---------+
+6. setup a customer called John in London branch
+Status changed!
+Set Account with Account# = 0000000
+Set customer with customer# = 00000
+7. setup an account for John in Toronto branch with initial deposit of $500
+Status changed!
+Set Account with Account# = 0020000
+8. setup an account for John in Paris branch with initial deposit of $1,000
+Status changed!
+Set Account with Account# = 0010000
+9. setup an account for John in New York branch with initial deposit of $1,000
+Status changed!
+Set Account with Account# = 0030000
+10. show customer John
++-----------+----------+--------+----------+---------+
+| Customer# |   Name   | Status | Account# | Balance |
++===========+==========+========+==========+=========+
+|      00000|      John|       3|   0000000|     0.00|
++-----------+----------+--------+----------+---------+
+|      00000|      John|       3|   0020000|   500.00|
++-----------+----------+--------+----------+---------+
+|      00000|      John|       3|   0010000|  1000.00|
++-----------+----------+--------+----------+---------+
+|      00000|      John|       3|   0030000|  1000.00|
++-----------+----------+--------+----------+---------+
+|                            Total Balance =  2500.00|
++-----------+----------+--------+----------+---------+
+11. setup a customer called Joan in Toronto branch with initial deposit of $1,000
+Status changed!
+Set Account with Account# = 0020001
+Set customer with customer# = 00001
+12. setup a customer called Mary in Paris branch
+Status changed!
+Set Account with Account# = 0010001
+Set customer with customer# = 00002
+13. deposit $1,000 to Mary's Paris branch
+Status changed!
+Deposit complete!
+14. setup a customer called Mary in New York branch with initial deposit of $1,000
+Unable to setup customer, as it already exists.
+15. setup an account for Mary in New York branch with initial deposit of $1,000
+Status changed!
+Set Account with Account# = 0030001
+16. show customer Mary
++-----------+----------+--------+----------+---------+
+| Customer# |   Name   | Status | Account# | Balance |
++===========+==========+========+==========+=========+
+|      00002|      Mary|       3|   0010001|  1000.00|
++-----------+----------+--------+----------+---------+
+|      00002|      Mary|       3|   0030001|  1000.00|
++-----------+----------+--------+----------+---------+
+|                            Total Balance =  2000.00|
++-----------+----------+--------+----------+---------+
+17. setup a customer called Sean in Toronto branch with initial deposit of $1,000
+Status changed!
+Set Account with Account# = 0020002
+Set customer with customer# = 00003
+18. setup a customer called Tony in Ottawa branch
+Unable to set up customer, branch not found.
+19. setup a customer called Tony in Toronto branch
+Status changed!
+Set Account with Account# = 0020003
+Set customer with customer# = 00004
+20. transfer $1000 from John's Toronto account to his Paris account
+Insufficient funds
+21. transfer $1000 from John’s New York branch to his Paris account
+Status changed!
+Status changed!
+Transfer complete!
+22. show the balances of all John’s account.
++-----------+----------+--------+----------+---------+
+| Customer# |   Name   | Status | Account# | Balance |
++===========+==========+========+==========+=========+
+|      00000|      John|       3|   0000000|     0.00|
++-----------+----------+--------+----------+---------+
+|      00000|      John|       3|   0020000|   500.00|
++-----------+----------+--------+----------+---------+
+|      00000|      John|       3|   0010000|  2000.00|
++-----------+----------+--------+----------+---------+
+|      00000|      John|       3|   0030000|     0.00|
++-----------+----------+--------+----------+---------+
+|                            Total Balance =  2500.00|
++-----------+----------+--------+----------+---------+
+23. close every John's account that has 0 balance.
+Branch closed!
+Account closed!
+Account closed!
+24. withdraw $1000 from Sean's Toronto account
+Status changed!
+Withdraw complete!
+25. show all accounts in Toronto branch
++----------+-----------+---------+
+| Account# | Customer# | Balance |
++==========+===========+=========+
+|   0020000|      00000|   500.00|
++----------+-----------+---------+
+|   0020001|      00001|  1000.00|
++----------+-----------+---------+
+|   0020002|      00003|     0.00|
++----------+-----------+---------+
+|   0020003|      00004|     0.00|
++----------+-----------+---------+
+|        Total Balance =  1500.00|
++----------+-----------+---------+
+26. show all branches of the bank.
+     Branch#    |     Address     
+================+=================
+             001|            Paris
++----------+-----------+---------+
+| Account# | Customer# | Balance |
++==========+===========+=========+
+|   0010000|      00000|  2000.00|
++----------+-----------+---------+
+|   0010001|      00002|  1000.00|
++----------+-----------+---------+
+|        Total Balance =  3000.00|
++----------+-----------+---------+
+             002|          Toronto
++----------+-----------+---------+
+| Account# | Customer# | Balance |
++==========+===========+=========+
+|   0020000|      00000|   500.00|
++----------+-----------+---------+
+|   0020001|      00001|  1000.00|
++----------+-----------+---------+
+|   0020002|      00003|     0.00|
++----------+-----------+---------+
+|   0020003|      00004|     0.00|
++----------+-----------+---------+
+|        Total Balance =  1500.00|
++----------+-----------+---------+
+             003|         New York
++----------+-----------+---------+
+| Account# | Customer# | Balance |
++==========+===========+=========+
+|   0030001|      00002|  1000.00|
++----------+-----------+---------+
+|        Total Balance =  1000.00|
++----------+-----------+---------+
+]0;fedora@COMP4003:~/AnkushVarshneyaComp4003Assignment4[fedora@COMP4003 AnkushVarshneyaComp4003Assignment4]$ exit
+
+Script done on Sun 15 Nov 2015 12:19:56 AM UTC

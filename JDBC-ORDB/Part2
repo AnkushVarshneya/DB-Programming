@@ -1,0 +1,127 @@
+Script started on Tue 24 Nov 2015 05:07:05 PM UTC
+]0;fedora@COMP4003:~/AnkushVarshneyaComp4003Assignment5[?1034h[fedora@COMP4003 AnkushVarshneyaComp4003Assignment5]$ sqlplus
+
+SQL*Plus: Release 11.2.0.2.0 Production on Tue Nov 24 17:07:13 2015
+
+Copyright (c) 1982, 2011, Oracle.  All rights reserved.
+
+Enter user-name: oracle
+Enter password: 
+
+Connected to:
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+SQL> @as5.p2
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+2 rows created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+2 rows created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+SQL> exit
+Disconnected from Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+]0;fedora@COMP4003:~/AnkushVarshneyaComp4003Assignment5[fedora@COMP4003 AnkushVarshneyaComp4003Assignment5]$ exit
+
+Script done on Tue 24 Nov 2015 05:07:42 PM UTC

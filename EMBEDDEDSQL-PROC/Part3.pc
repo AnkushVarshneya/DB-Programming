@@ -1,0 +1,135 @@
+/*****************************************************************
+Author: Ankush Varshneya (100853074)
+Assignment#2 Part#3 - Dynamic SQL Method 3
+
+1. proc Part3.pc
+2. cc -c Part3.c -I/usr/include/oracle/11.2/client64
+3. cc -o Part3 Part3.o -L/usr/lib/oracle/11.2/client64/lib -lclntsh
+4. ./Part3
+
+This program connects you to ORACLE.
+Then it displays the tables as specified in the assignment
+Note:
+  -Sql Statements have a limit of 1023 characters.
+  -SNUM has a limit of 4 characters.
+  -SNAME has a limit of 10 characters.
+  -CITY has a limit of 10 characters.
+  -PNUM has a limit of 4 characters.
+  -PNAME has a limit of 10 characters.
+  -COLOR has a limit of 10 characters.
+*****************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Prototypes 
+char* trimRight(char*);
+
+exec sql include sqlca;
+exec sql begin declare section;
+  char  sqlstmt[1024];
+  char  sqlstmtInner[1024];
+  char  *MYID= "oracle/oracle11g";
+  char  SNUM[5];
+  char  SNAME[11];
+  int   STATUS;
+  char  CITY[11];
+  char  PNUM[5];
+  char  PNAME[11];
+  char  COLOR[11];
+  float WEIGHT;
+exec sql end declare section;
+
+int main() {
+  // Connect to Oracle implicitly
+  exec sql connect :MYID;
+  if (sqlca.sqlcode == 0)
+    printf("Connected to ORACLE\n");
+  else {
+    printf("Connect Failed\n");
+    exit(1);
+  }
+  
+  //query table Suppliers using dynamic SQL method 3
+  strcpy(sqlstmt, "SELECT S#, SNAME, STATUS, CITY FROM Suppliers");
+
+  exec sql prepare outer_query from :sqlstmt;
+  if (sqlca.sqlcode == 0)
+    printf("statement prepared \n");
+  else
+    printf("statement not prepared: %s \n", sqlca.sqlerrm.sqlerrmc);
+
+  //query table Parts/SP using dynamic SQL method 3
+  strcpy(sqlstmtInner,
+    "SELECT Parts.P#, Parts.PNAME, Parts.COLOR, Parts.WEIGHT, Parts.CITY "
+    "FROM Parts "
+    "WHERE EXISTS "
+      "(SELECT * "
+       "FROM SP "
+       "WHERE SP.P# = Parts.P# AND SP.S# = :v1)"
+  );
+
+  exec sql prepare inner_query from :sqlstmtInner;
+  if (sqlca.sqlcode == 0)
+    printf("statement prepared \n");
+  else
+    printf("statement not prepared: %s \n", sqlca.sqlerrm.sqlerrmc);
+
+  exec sql declare outer_cursor cursor for outer_query;
+  exec sql open outer_cursor;
+  if (sqlca.sqlcode == 0)
+    printf("Cursor opened\n");
+  else
+    printf("Cursor error: %s \n", sqlca.sqlerrm.sqlerrmc);
+
+  exec sql declare inner_cursor cursor for inner_query;
+
+  printf("+----------+-------------------------+----------+--------------------------+\n");
+  printf("|    S#    |          SNAME          |  STATUS  |           CITY           |\n");
+  printf("+==========+=========================+==========+==========================+\n");
+
+  exec sql fetch outer_cursor into :SNUM, :SNAME, :STATUS, :CITY;
+  while(sqlca.sqlcode==0) {
+    printf("|%10s|%25s|%10i|%26s|\n", SNUM, SNAME, STATUS, CITY);
+    printf("+----------+-------------------------+----------+--------------------------+\n");
+
+    //trim spaces
+    trimRight(SNUM);
+    exec sql open inner_cursor using :SNUM;
+    if (sqlca.sqlcode == 0)
+      //printf("Cursor opened\n");
+      ;
+    else
+      printf("Cursor error: %s \n", sqlca.sqlerrm.sqlerrmc);
+
+      printf("|    +------+-----------------+-----------+--------+------------------+    |\n");
+      printf("|    |  P#  |      PNAME      |   COLOR   | WEIGHT |       CITY       |    |\n");
+      printf("|    +======+=================+===========+========+==================+    |\n");
+
+    exec sql fetch inner_cursor into :PNUM, :PNAME, :COLOR, :WEIGHT, :CITY;
+    while(sqlca.sqlcode==0) {
+      printf("|    |%6s|%17s|%11s|%8.4f|%18s|    |\n", PNUM, PNAME, COLOR, WEIGHT, CITY);
+      printf("|    +------+----------------+------------+--------+------------------+    |\n");
+      exec sql fetch inner_cursor into :PNUM, :PNAME, :COLOR, :WEIGHT, :CITY;
+    }
+    exec sql close inner_cursor;
+
+    printf("+----------+-------------------------+----------+--------------------------+\n");
+    exec sql fetch outer_cursor into :SNUM, :SNAME, :STATUS, :CITY;
+  }
+  exec sql close outer_cursor;
+
+  exec sql commit release;
+  printf("Bye!\n");
+  exit(0);
+}
+
+// Trims the spaces to the right
+// Needed because SQL driver returns values padded with spaces 
+char* trimRight(char* str) {
+  char* lastChar = str + strlen(str);
+  while(isspace(*--lastChar));
+  *(lastChar + 1) = '\0';
+  return str;
+}

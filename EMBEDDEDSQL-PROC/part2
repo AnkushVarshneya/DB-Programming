@@ -1,0 +1,279 @@
+Script started on Sat 03 Oct 2015 11:45:26 PM UTC
+]0;fedora@COMP4003:~/Assignment2[?1034h[fedora@COMP4003 Assignment2]$ proc Part2.pc
+
+Pro*C/C++: Release 11.2.0.1.0 - Production on Sat Oct 3 23:45:38 2015
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+
+System default option values taken from: /u01/app/oracle/product/11.2.0/xe/precomp/admin/pcscfg.cfg
+
+]0;fedora@COMP4003:~/Assignment2[fedora@COMP4003 Assignment2]$ cc -c Part2.c -I/usr/include/oracle/11.2/client64
+"Part2.c", line 117: warning: no explicit type given
+"Part2.c", line 119: warning: no explicit type given
+"Part2.c", line 121: warning: no explicit type given
+"Part2.c", line 122: warning: no explicit type given
+"Part2.c", line 123: warning: no explicit type given
+"Part2.c", line 732: warning: newline not last character in file
+]0;fedora@COMP4003:~/Assignment2[fedora@COMP4003 Assignment2]$ cc -o Part2 Part2.o -L/usr/lib/oracle/11.2/client64 /lib -lclntsh
+]0;fedora@COMP4003:~/Assignment2[fedora@COMP4003 Assignment2]$ ./Part2
+Connected to ORACLE
+statement prepared 
+statement prepared 
+statement prepared 
+Type one of the following integers to select a table.
+1.Suppliers
+2.Parts
+3.SP
+0.To Quit
+1
+Type S# (4 char max.):S! 1
+Type SNAME (10 char max.):Smith
+Type STATUS (Integers only!):20
+Type CITY (10 char max.):London
+insert done
+Type one of the following integers to select a table.
+1.Suppliers
+2.Parts
+3.SP
+0.To Quit
+1
+Type S# (4 char max.):S2
+Type SNAME (10 char max.):Jones
+Type STATUS (Integers only!):30
+Type CITY (10 char max.):Paris
+insert done
+Type one of the following integers to select a table.
+1.Suppliers
+2.Parts
+3.SP
+0.To Quit
+1
+Type S# (4 char max.):S3
+Type SNAME (10 char max.):Blake
+Type STATUS (Integers only!):20  30
+Type CITY (10 char max.):Paris
+insert done
+Type one of the following integers to select a table.
+1.Suppliers
+2.Parts
+3.SP
+0.To Quit
+1
+Type S# (4 char max.):S4
+Type SNAME (10 char max.):Clae rk
+Type STATUS (Integers only!):20
+Type CITY (10 char max.):London
+insert done
+Type one of the following integers to select a table.
+1.Suppliers
+2.Parts
+3.SP
+0.To Quit
+1
+Type S# (4 char max.):S5
+Type SNAME (10 char max.):Adams
+Type STATUS (Integers only!):30
+Type CITY (10 char max.):Athens
+insert done
+Type one of the following integers to select a table.
+1.Suppliers
+2.Parts
+3.SP
+0.To Quit
+2
+Type P# (4 char max.):P1
+Type PNAME (10 char max.):Nut
+Type COLOR (10 char max.):Red
+Type WEIGHT (Floats only!):12.0
+Type CITY (10 char max.):London
+insert done
+Type one of the following integers to select a table.
+1.Suppliers
+2.Parts
+3.SP
+0.To Quit
+2
+Type P# (4 char max.):P2
+Type PNAME (10 char max.):Bolt
+Type COLOR (10 char max.):Green
+Type WEIGHT (Floats only!):17.0
+Type CITY (10 char max.):Paris
+insert done
+Type one of the following integers to select a table.
+1.Suppliers
+2.Parts
+3.SP
+0.To Quit
+2
+Type P# (4 char max.):P3
+Type PNAME (10 char max.):Screw
+Type COLOR (10 char max.):Blue
+Type WEIGHT (Floats only!):17.0
+Type CITY (10 char max.):Oslo
+insert done
+Type one of the following integers to select a table.
+1.Suppliers
+2.Parts
+3.SP
+0.To Quit
+2
+Type P# (4 char max.):P4
+Type PNAME (10 char max.):Screw
+Type COLOR (10 char max.):Red
+Type WEIGHT (Floats only!):14.0
+Type CITY (10 char max.):London
+insert done
+Type one of the following integers to select a table.
+1.Suppliers
+2.Parts
+3.SP
+0.To Quit
+2
+Type P# (4 char max.):P5
+Type PNAME (10 char max.):Can
+Type COLOR (10 char max.):B Blue
+Type WEIGHT (Floats only!):12.0
+Type CITY (10 char max.):Paris
+insert done
+Type one of the following integers to select a table.
+1.Suppliers
+2.Parts
+3.SP
+0.To Quit
+2
+Type P# (4 char max.):P6
+Type PNAME (10 char max.):Cog
+Type COLOR (10 char max.):Red
+Type WEIGHT (Floats only!):19.0
+Type CITY (10 char max.):London
+insert done
+Type one of the following integers to select a table.
+1.Suppliers
+2.Parts
+3.SP
+0.To Quit
+3
+Type S# (4 char max.):S1
+Type P# (4 char max.):P1
+Type QTY (Integers only!):300
+insert done
+Type one of the following integers to select a table.
+1.Suppliers
+2.Parts
+3.SP
+0.To Quit
+3
+Type S# (4 char max.):S1
+Type P# (4 char max.):P2
+Type QTY (Integers only!):200
+insert done
+Type one of the following integers to select a table.
+1.Suppliers
+2.Parts
+3.SP
+0.To Quit
+#S1   3
+Type S# (4 char max.):S1
+Type P# (4 char max.):P3
+Type QTY (Integers only!):400
+insert done
+Type one of the following integers to select a table.
+1.Suppliers
+2.Parts
+3.SP
+0.To Quit
+3
+Type S# (4 char max.):s S1
+Type P# (4 char max.):P4
+Type QTY (Integers only!):200
+insert done
+Type one of the following integers to select a table.
+1.Suppliers
+2.Parts
+3.SP
+0.To Quit
+3
+Type S# (4 char max.):S1
+Type P# (4 char max.):P5
+Type QTY (Integers only!):100
+insert done
+Type one of the following integers to select a table.
+1.Suppliers
+2.Parts
+3.SP
+0.To Quit
+3
+Type S# (4 char max.):S1
+Type P# (4 char max.):P6
+Type QTY (Integers only!):100
+insert done
+Type one of the following integers to select a table.
+1.Suppliers
+2.Parts
+3.SP
+0.To Quit
+3
+Type S# (4 char max.):S2
+Type P# (4 char max.):P1
+Type QTY (Integers only!):300
+insert done
+Type one of the following integers to select a table.
+1.Suppliers
+2.Parts
+3.SP
+0.To Quit
+3
+Type S# (4 char max.):S2
+Type P# (4 char max.):P2
+Type QTY (Integers only!):400
+insert done
+Type one of the following integers to select a table.
+1.Suppliers
+2.Parts
+3.SP
+0.To Quit
+3
+Type S# (4 char max.):S3
+Type P# (4 char max.):P2
+Type QTY (Integers only!):200
+insert done
+Type one of the following integers to select a table.
+1.Suppliers
+2.Parts
+3.SP
+0.To Quit
+3
+Type S# (4 char max.):S4
+Type P# (4 char max.):P2
+Type QTY (Integers only!):200
+insert done
+Type one of the following integers to select a table.
+1.Suppliers
+2.Parts
+3.SP
+0.To Quit
+3
+Type S# (4 char max.):S4
+Type P# (4 char max.):P4
+Type QTY (Integers only!):300
+insert done
+Type one of the following integers to select a table.
+1.Suppliers
+2.Parts
+3.SP
+0.To Quit
+3
+Type S# (4 char max.):S4
+Type P# (4 char max.):P4 5
+Type QTY (Integers only!):400
+insert done
+Type one of the following integers to select a table.
+1.Suppliers
+2.Parts
+3.SP
+0.To Quit
+0
+Bye!
+]0;fedora@COMP4003:~/Assignment2[fedora@COMP4003 Assignment2]$ exit
+
+Script done on Sat 03 Oct 2015 11:55:35 PM UTC

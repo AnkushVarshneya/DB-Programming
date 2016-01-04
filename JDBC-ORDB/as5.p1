@@ -1,0 +1,99 @@
+-----------------------------------------
+-- Author: Ankush Varshneya (100853074)
+-- Assignment#5 Part#1
+-- This SQL script creates
+-- student/course object Schema.
+-----------------------------------------
+
+-- set env
+SET SERVEROUTPUT ON SIZE 10000;
+SET LINESIZE 1000;
+SET PAGESIZE 1000;
+
+-- drop some types and table
+/*
+DROP TABLE student;
+DROP TABLE course;
+DROP TYPE course_nt FORCE;
+DROP TYPE course_t FORCE;
+DROP TYPE student_nt FORCE;
+DROP TYPE ugrad_t FORCE;
+DROP TYPE grad_t FORCE;
+DROP TYPE student_t FORCE;
+DROP TYPE c_t FORCE;
+DROP TYPE c_nt FORCE;
+DROP TYPE pc_t FORCE;
+DROP TYPE pc_nt FORCE;
+DROP TYPE ms_t FORCE;
+DROP TYPE ms_nt FORCE;
+DROP TYPE gs_t FORCE;
+DROP TYPE gs_nt FORCE;
+DROP TYPE mgs_t FORCE;
+DROP TYPE mgs_nt FORCE;
+*/
+
+-- Create course object as incomplete type
+CREATE TYPE course_t;
+/
+
+-- create nested table for course_t
+CREATE TYPE course_nt AS TABLE OF REF course_t;
+/
+
+-- Create student object as incomplete type
+CREATE TYPE student_t;
+/
+
+-- create nested table for student_t
+CREATE TYPE student_nt AS TABLE OF REF student_t;
+/
+
+-- Create course object
+CREATE TYPE course_t AS OBJECT (
+  c#                VARCHAR2(4),
+  name              VARCHAR2(10),
+  preReqCourses     course_nt,
+  studentsEnrolled  student_nt
+);
+/
+
+-- Create base student object
+CREATE TYPE student_t AS OBJECT (
+  s#                VARCHAR2(4),
+  name              VARCHAR2(10),
+  gender            CHAR(1),
+  coursesEnrolled   course_nt
+) NOT FINAL;
+/
+
+-- Create Undergrade
+CREATE TYPE ugrad_t UNDER student_t (
+  Phone             VARCHAR2(15)
+);
+/
+
+-- Create Grad
+CREATE TYPE grad_t UNDER student_t (
+  Phone             VARCHAR2(15)
+);
+/
+
+-- Create course table
+CREATE TABLE course of course_t(
+  PRIMARY KEY(c#),
+  UNIQUE(name)
+)
+-- commented out as this causes error
+-- OBJECT IDENTIFIER IS PRIMARY KEY
+NESTED TABLE preReqCourses STORE AS preReqCourses_tb, 
+NESTED TABLE studentsEnrolled STORE AS studentsEnrolled_tb;
+
+-- Create student table
+CREATE TABLE student of student_t(
+  PRIMARY KEY(s#),
+  UNIQUE(name),
+  CHECK(gender IN ('M','F'))
+)
+-- commented out as this causes error
+-- OBJECT IDENTIFIER IS PRIMARY KEY
+NESTED TABLE coursesEnrolled STORE AS coursesEnrolled_tb;

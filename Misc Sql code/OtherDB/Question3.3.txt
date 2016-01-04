@@ -1,0 +1,242 @@
+Problem 3.3.1)
+
+English: Make a list of all non-active (stolen or lost) phones (show imie, status, modelid, model name )
+
+Query:
+SELECT imie, status, modelID, model_name
+	FROM phone NATURAL JOIN model
+		WHERE status!='active';
+
+Results:
+
+imie        status      modelID     model_name
+----------  ----------  ----------  -------------
+1           stolen      C6603       Sony Xperia Z
+2           lost        C6906       Sony Xperia Z
+4           stolen      RM-819      Nokia Lumia 8
+5           lost        RM-821      Nokia Lumia 9
+7           stolen      A1533       iPhone 5s
+8           lost        A1428       iPhone 5
+10          stolen      z30         BlackBerry Z3
+11          lost        C6603       Sony Xperia Z
+13          stolen      D6502       Sony Xperia Z
+14          lost        RM-819      Nokia Lumia 8
+16          stolen      RM-876      Nokia Lumia 1
+17          lost        A1533       iPhone 5s
+19          stolen      z10         BlackBerry Z1
+20          lost        z30         BlackBerry Z3
+22          stolen      C6906       Sony Xperia Z
+23          lost        D6502       Sony Xperia Z
+25          stolen      RM-821      Nokia Lumia 9
+26          lost        RM-876      Nokia Lumia 1
+28          stolen      A1428       iPhone 5
+29          lost        z10         BlackBerry Z1
+30          stolen      z30         BlackBerry Z3
+
+
+Problem 3.3.2)
+
+English: get the most stolen phone modelid and model and count
+
+Query:
+SELECT modelID, model_name, count(status) as count
+		FROM phone NATURAL JOIN model
+			WHERE status='stolen'
+		GROUP BY modelID
+		HAVING count =
+		(SELECT MAX(count)
+		FROM
+			(SELECT modelID, model_name, count(status) as count
+				FROM phone NATURAL JOIN model
+					WHERE status='stolen'
+				GROUP BY modelID));
+
+Results: 
+modelID     model_name      count
+----------  --------------  ----------
+z30         BlackBerry Z30  2
+
+
+Problem 3.3.3)
+
+English: Make a list of phones running android (show modelid, model name, os, version)
+
+Query:
+SELECT modelID, model_name, os, version
+	FROM model NATURAL JOIN software
+		where os='Android';
+
+Results:
+modelID     model_name     os          version
+----------  -------------  ----------  ----------
+C6603       Sony Xperia Z  Android     4.2
+C6906       Sony Xperia Z  Android     4.3
+D6502       Sony Xperia Z  Android     4.4
+
+
+Problem 3.3.4)
+
+English: find all specs of all phones
+
+Query:
+SELECT * FROM model
+	NATURAL JOIN software
+	NATURAL JOIN SoC
+	NATURAL JOIN display
+	LEFT JOIN (SELECT
+			modelID as pid,
+			megapixel AS pc_megapixel,
+			resolution AS pc_resolution,
+			zoom AS pc_zoom,
+			video AS pc_video,
+			features AS pc_features
+			FROM camera
+				WHERE camera_type = 'Primary')
+		ON modelID = pid
+	LEFT JOIN (SELECT
+			modelID as sid,
+			megapixel AS sc_megapixel,
+			resolution AS sc_resolution,
+			zoom AS sc_zoom,
+			video AS sc_video,
+			features AS sc_features
+			FROM camera
+				WHERE camera_type = 'Secondary')
+		ON modelID = sid;
+
+Results:
+modelID     model_name     dimention                                  weight           connectivity                       ports       sensor                                   battery                                storage     ram         manufacture  chipset        os          version     gpu         cpu_core    cpu_speed   screensize  resolution          touchtype                    pixel_density  material_used                              pid         pc_megapixel  pc_resolution       pc_zoom     pc_video     pc_features                                                                         sid         sc_megapixel  sc_resolution       sc_zoom     sc_video     sc_features
+----------  -------------  -----------------------------------------  ---------------  ---------------------------------  ----------  ---------------------------------------  -------------------------------------  ----------  ----------  -----------  -------------  ----------  ----------  ----------  ----------  ----------  ----------  ------------------  ---------------------------  -------------  -----------------------------------------  ----------  ------------  ------------------  ----------  -----------  ----------------------------------------------------------------------------------  ----------  ------------  ------------------  ----------  -----------  -----------
+C6603       Sony Xperia Z  139 x 71 x 7.9 mm (5.47 x 2.80 x 0.31 in)  146 g (5.15 oz)  LTE, 3G, 2G, WIFI, BLUETOOTH, NCF  USB, Sound  Accelerometer, gyro, proximity, compass  Non-removable Li-Ion 2330 mAh battery  16.0        2.0         Sony         Snapdragon S4  Android     4.2         4           1.5         Adreno 320  5.0         1080 x 1920 pixels  Multitouch up to 10 fingers  441            Shatter proof and scratch-resistant glass  C6603       13            4128 x 3096 pixels  digital     1080p@30fps  Geo-tagging, touch focus, face detection, image stabilization, HDR, sweep panorama  C6603       2             1416 x 1416 pixels  none        1080p@30fps  none
+C6906       Sony Xperia Z  144 x 74 x 8.5 mm (5.67 x 2.91 x 0.33 in)  170 g (6.00 oz)  LTE, 3G, 2G, WIFI, BLUETOOTH, NCF  USB, Sound  Accelerometer, gyro, proximity, compass  Non-removable Li-Ion 3000 mAh battery  16.0        2.0         Sony         Snapdragon 80  Android     4.3         4           2.2         Adreno 330  5.0         1080 x 1920 pixels  Multitouch up to 10 fingers  441            Shatter proof and scratch-resistant glass  C6906       20.7          5248 ะเ 3936 pixel  digital     1080p@30fps  1/2.3' sensor size, geo-tagging, touch focus, face detection, image stabilization,  C6906       2             1416 x 1416 pixels  none        1080p@30fps  none
+D6502       Sony Xperia Z  146.8 x 73.3 x 8.2 mm (5.78 x 2.89 x 0.32  163 g (5.75 oz)  LTE, 3G, 2G, WIFI, BLUETOOTH, NCF  USB, Sound  Accelerometer, gyro, proximity, compass  Non-removable Li-Ion 3200 mAh battery  16.0        3.0         Sony         Snapdragon 80  Android     4.4         4           2.5         Adreno 330  5.2         1080 x 1920 pixels  Multitouch up to 10 fingers  424            Shatter proof and scratch-resistant glass  D6502       20.7          5248 ะเ 3936 pixel  digital     1080p@30fps  1/2.3' sensor size, geo-tagging, touch focus, face detection, image stabilization,  D6502       2             1416 x 1416 pixels  none        1080p@30fps  none
+RM-819      Nokia Lumia 8  116.5 x 61.2 x 12.1 mm, 76.1 cc (4.59 x 2  142 g (5.01 oz)  3G, 2G, WIFI, BLUETOOTH            USB, Sound  Accelerometer, proximity, compass        Non-removable Li-Ion 1450 mAh battery  16.0        0.5         Nokia        Snapdragon S2  Windows     7           1           1.4         Adreno 205  3.7         480 x 800 pixels    Multitouch                   252            Corning Gorilla Glass - Nokia ClearBlack   RM-819      8             3264 x 2448 pixels  digital     730p@30fps   Geo-tagging, Carl Zeiss optics, autofocus, dual-LED flash
+RM-821      Nokia Lumia 9  130.3 x 70.8 x 10.7 mm, 99 cc (5.13 x 2.7  185 g (6.53 oz)  LTE, 3G, 2G, WIFI, BLUETOOTH, NCF  USB, Sound  Accelerometer, gyro, proximity, compass  Non-removable Li-Ion 2000 mAh battery  32.0        1.0         Nokia        Snapdragon S3  Windows     8           2           1.5         Adreno 225  4.5         768 x 1280 pixels   Multitouch                   332            Corning Gorilla Glass 2 - PureMotion HD+   RM-821      8             3264 x 2448 pixels  digital     1080p@30fps  PureView technology, geo-tagging, touch focus, Carl Zeiss optics, autofocus, dual-  RM-821      1.3           1152 x 864 pixels   none        720p@30fps   none
+RM-876      Nokia Lumia 1  130.4 x 71.4 x 10.4 mm, 96.9 cc (5.13 x 2  158 g (5.57 oz)  LTE, 3G, 2G, WIFI, BLUETOOTH, NCF  USB, Sound  Accelerometer, gyro, proximity, compass  Non-removable Li-Ion 3200 mAh battery  32.0        2.0         Nokia        Snapdragon S3  Windows     8           2           1.5         Adreno 225  4.5         768 x 1280 pixels   Multitouch                   332            Corning Gorilla Glass 3 - PureMotion HD+   RM-876      41            7152 x 5368 pixels  4x          1080p@30fps  1/1.5' sensor size, 1.12 -มm pixel size, PureView technology, geo-tagging, face de  RM-876      1.3           1152 x 864 pixels   none        720p@30fps   none
+A1533       iPhone 5s      123.8 x 58.6 x 7.6 mm (4.87 x 2.31 x 0.30  112 g (3.95 oz)  LTE, 3G, 2G, WIFI, BLUETOOTH       USB, Sound  Accelerometer, gyro, proximity, compass  Non-removable Li-Po 1560 mAh battery   64.0        1.0         Apple        Apple A7       IOS         7           2           1.3         PowerVR G6  4.0         640 x 1136 pixels   Multitouch                   326            Corning Gorilla Glass, oleophobic coating  A1533       8             3264 x 2448 pixels  digital     1080p@30fps  1/3' sensor size, 1.5 -มm pixel size, simultaneous HD video and image recording, t  A1533       1.2           1152 x 864 pixels   none        720p@30fps   face detect
+A1428       iPhone 5       123.8 x 58.6 x 7.6 mm (4.87 x 2.31 x 0.30  112 g (3.95 oz)  LTE, 3G, 2G, WIFI, BLUETOOTH       USB, Sound  Accelerometer, gyro, proximity, compass  Non-removable Li-Po 1440 mAh battery   64.0        1.0         Apple        Apple A6       IOS         6           2           1.3         PowerVR SG  4.0         640 x 1136 pixels   Multitouch                   326            Corning Gorilla Glass, oleophobic coating  A1428       8             3264 x 2448 pixels  digital     1080p@30fps  1/3.2' sensor size, 1.4 -มm pixel size, simultaneous HD video and image recording,  A1428       1.2           1152 x 864 pixels   none        720p@30fps   face detect
+z10         BlackBerry Z1  130 x 65.6 x 9 mm (5.12 x 2.58 x 0.35 in)  137.5 g (4.83 o  LTE, 3G, 2G, WIFI, BLUETOOTH, NCF  USB, Sound  Accelerometer, gyro, proximity, compass  Non-removable Li-Ion 1800 mAh battery  16.0        2.0         Blackberry   Snapdragon S3  Blackbery   10.x        2           1.5         Adreno 225  4.2         768 x 1280 pixels   Multitouch                   355            Glass                                      z10         8             3264 x 2448 pixels  digital     1080p@30fps  Geo-tagging, face detection, image stabilization, HDR (via software update)         z10         2             1416 x 1416 pixels  none        720p@30fps   none
+z30         BlackBerry Z3  140.7 x 72 x 9.4 mm (5.54 x 2.83 x 0.37 i  170 g (6.00 oz)  LTE, 3G, 2G, WIFI, BLUETOOTH, NCF  USB, Sound  Accelerometer, gyro, proximity, compass  Non-removable Li-Po 2880 mAh battery   16.0        2.0         Blackberry   Snapdragon 80  Blackbery   10.x        4           2.2         Adreno 330  5.0         768 x 1280 pixels   Multitouch                   294            Glass                                      z30         8             3264 x 2448 pixels  digital     1080p@30fps  Geo-tagging, face detection, image stabilization, HDR                               z30         2             1416 x 1416 pixels  none        720p@30fps   none
+
+
+Problem 3.3.5)
+
+English: get the most popular camera megapixel and the count
+
+Query:
+SELECT megapixel, count(modelID) as count
+	FROM model NATURAL JOIN camera			
+		GROUP BY megapixel
+		HAVING count =
+		(SELECT MAX(count)
+			FROM
+			(SELECT megapixel, count(modelID) as count
+				FROM model NATURAL JOIN camera			
+					GROUP BY megapixel));
+
+Results:
+megapixel   count
+----------  ----------
+8           6
+
+
+Problem 3.3.6)
+
+English: find all phones from sony (show modelid, model name)
+
+
+Query:
+SELECT modelID, model_name
+	FROM model
+		WHERE manufacture='Sony';
+
+Results:
+modelID     model_name
+----------  -------------
+C6603       Sony Xperia Z
+C6906       Sony Xperia Z
+D6502       Sony Xperia Z
+
+Problem 3.3.7)
+
+English: find phones (show modelid, model name) with ram less then or equal to sony xperia z (modelid=C6603)
+
+Query:
+SELECT modelID, model_name, ram
+	FROM model
+		WHERE ram<=(SELECT ram
+					FROM model
+						WHERE modelID='C6603');
+
+Results:
+modelID     model_name     ram
+----------  -------------  ----------
+C6603       Sony Xperia Z  2.0
+C6906       Sony Xperia Z  2.0
+RM-819      Nokia Lumia 8  0.5
+RM-821      Nokia Lumia 9  1.0
+RM-876      Nokia Lumia 1  2.0
+A1533       iPhone 5s      1.0
+A1428       iPhone 5       1.0
+z10         BlackBerry Z1  2.0
+z30         BlackBerry Z3  2.0
+
+
+Problem 3.3.8)
+
+English: find all phones with a secondary camera (show modelid, model name, camera_type)
+
+
+Query:
+SELECT modelID, model_name, camera_type
+	FROM model NATURAL JOIN camera
+		WHERE camera_type='Secondary';
+
+Results:
+modelID     model_name     camera_type
+----------  -------------  -----------
+C6603       Sony Xperia Z  Secondary
+C6906       Sony Xperia Z  Secondary
+D6502       Sony Xperia Z  Secondary
+RM-821      Nokia Lumia 9  Secondary
+RM-876      Nokia Lumia 1  Secondary
+A1533       iPhone 5s      Secondary
+A1428       iPhone 5       Secondary
+z10         BlackBerry Z1  Secondary
+z30         BlackBerry Z3  Secondary
+
+Problem 3.3.9)
+
+English: find all phones with only a primary camera 
+
+Query:
+SELECT modelID, model_name, camera_type, GROUP_CONCAT(camera_type) as cameras
+	FROM model NATURAL JOIN camera
+		GROUP BY modelID
+			HAVING cameras='Primary';
+
+Results:
+modelID     model_name       camera_type  cameras
+----------  ---------------  -----------  ----------
+RM-819      Nokia Lumia 800  Primary      Primary
+
+
+Problem 3.3.10)
+
+English: find the most popular chipset
+
+Query:
+SELECT chipset, count(modelID) as count
+	FROM model NATURAL JOIN SoC
+		GROUP BY chipset
+		HAVING count =
+		(SELECT MAX(count)
+			FROM
+			(SELECT chipset, count(modelID) as count
+				FROM model NATURAL JOIN SoC
+				GROUP BY chipset));
+
+Results:
+chipset        count
+-------------  ----------
+Snapdragon S3  3

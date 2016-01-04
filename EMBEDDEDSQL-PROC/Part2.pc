@@ -1,0 +1,144 @@
+/*****************************************************************
+Author: Ankush Varshneya (100853074)
+Assignment#2 Part#2 - Dynamic SQL Method 2
+
+1. proc Part2.pc
+2. cc -c Part2.c -I/usr/include/oracle/11.2/client64
+3. cc -o Part2 Part2.o -L/usr/lib/oracle/11.2/client64/lib -lclntsh
+4. ./Part2
+5. (Optional step) use ./Part2 < Part2Input.txt to populate with
+   sample data without having to type in data manually.
+
+This program connects you to ORACLE.
+Then it promts user to populates all tables in Part#1 with data
+until user presses 0.
+Note:
+  -Sql Statements have a limit of 1023 characters.
+  -SNUM has a limit of 4 characters.
+  -SNAME has a limit of 10 characters.
+  -CITY has a limit of 10 characters.
+  -PNUM has a limit of 4 characters.
+  -PNAME has a limit of 10 characters.
+  -COLOR has a limit of 10 characters.
+*****************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+exec sql include sqlca;
+exec sql begin declare section;
+  char  sqlstmt[1024];
+  char  *MYID= "oracle/oracle11g";
+  char  SNUM[5];
+  char  SNAME[11];
+  int   STATUS;
+  char  CITY[11];
+  char  PNUM[5];
+  char  PNAME[11];
+  char  COLOR[11];
+  float WEIGHT;
+  int   QTY;
+exec sql end declare section;
+
+int choice;
+
+int main() {
+  // Connect to Oracle implicitly
+  exec sql connect :MYID;
+  if (sqlca.sqlcode == 0)
+    printf("Connected to ORACLE\n");
+  else {
+    printf("Connect Failed\n");
+    exit(1);
+  }
+  
+  // Populate table containing suppliers using dynamic SQL method 2 using the prepare statment:
+  strcpy(sqlstmt, "INSERT INTO Suppliers (S#, SNAME, STATUS, CITY) VALUES (:v1, :v2, :v3, :v4)");
+  exec sql prepare s from :sqlstmt;
+  if (sqlca.sqlcode == 0)
+    printf("statement prepared \n");
+  else
+    printf("statement not prepared: %s \n", sqlca.sqlerrm.sqlerrmc);
+
+  // Populate table containing parts using dynamic SQL method 2 using the prepare statment:
+  strcpy(sqlstmt, "INSERT INTO Parts (P#, PNAME, COLOR, WEIGHT, CITY) VALUES (:v1, :v2, :v3, :v4, :v5)");
+  exec sql prepare p from :sqlstmt;
+  if (sqlca.sqlcode == 0)
+    printf("statement prepared \n");
+  else
+    printf("statement not prepared: %s \n", sqlca.sqlerrm.sqlerrmc);
+  
+  // Populate table containing supplier-parts relation/info using dynamic SQL method 2 using the prepare statment:
+  strcpy(sqlstmt, "INSERT INTO SP (S#, P#, QTY) VALUES (:v1, :v2, :v3)");
+  exec sql prepare sp from :sqlstmt;
+  if (sqlca.sqlcode == 0)
+    printf("statement prepared \n");
+  else
+    printf("statement not prepared: %s \n", sqlca.sqlerrm.sqlerrmc);
+
+  do {
+	  printf("Type one of the following integers to select a table.\n");
+	  printf("1.Suppliers\n");
+	  printf("2.Parts\n");
+	  printf("3.SP\n");
+	  printf("0.To Quit\n");
+    scanf("%1d", &choice);
+	  switch (choice){
+      case 1:
+        printf("Type S# (4 char max.):");
+        scanf("%4s", SNUM);
+        printf("Type SNAME (10 char max.):");
+        scanf("%10s", SNAME);
+        printf("Type STATUS (Integers only!):");
+        scanf("%d", &STATUS);
+        printf("Type CITY (10 char max.):");
+        scanf("%10s", CITY);
+        exec sql execute s using :SNUM, :SNAME, :STATUS, :CITY;
+        if (sqlca.sqlcode == 0)
+          printf("insert done\n");
+        else
+          printf("insert failed: %s \n", sqlca.sqlerrm.sqlerrmc);
+        break;
+      case 2:
+        printf("Type P# (4 char max.):");
+        scanf("%4s", PNUM);
+        printf("Type PNAME (10 char max.):");
+        scanf("%10s", PNAME);
+        printf("Type COLOR (10 char max.):");
+        scanf("%10s", COLOR);
+        printf("Type WEIGHT (Floats only!):");
+        scanf("%f", &WEIGHT);
+        printf("Type CITY (10 char max.):");
+        scanf("%10s", CITY);
+        exec sql execute p using :PNUM, :PNAME, :COLOR, :WEIGHT, :CITY;
+        if (sqlca.sqlcode == 0)
+          printf("insert done\n");
+        else
+          printf("insert failed: %s \n", sqlca.sqlerrm.sqlerrmc);
+        break;
+      case 3:
+        printf("Type S# (4 char max.):");
+        scanf("%4s", SNUM);
+        printf("Type P# (4 char max.):");
+        scanf("%4s", PNUM);        
+        printf("Type QTY (Integers only!):");
+        scanf("%d", &QTY);
+        exec sql execute sp using :SNUM, :PNUM, :QTY;
+        if (sqlca.sqlcode == 0)
+          printf("insert done\n");
+        else
+          printf("insert failed: %s \n", sqlca.sqlerrm.sqlerrmc);
+        break;
+      case 0:
+      break;
+      default:
+      printf("Choose a valid choice!\n");
+      break;
+    }
+  } while (choice !=0);
+
+  exec sql commit release;
+  printf("Bye!\n");
+  exit(0);
+}
